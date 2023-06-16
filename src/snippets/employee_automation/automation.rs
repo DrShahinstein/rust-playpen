@@ -92,6 +92,10 @@ pub fn run() {
             }
         }
 
+        if operation == "4" {
+            todo!("Implement the feature of showing banned employees.");
+        }
+
         if operation == "5" {
             println!("\nExited.");
             break;
