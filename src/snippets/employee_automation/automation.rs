@@ -33,8 +33,13 @@ pub fn run() {
 
         if operation == "1" {
             let name = read_input("Enter name: ");
-            let age = read_input("Enter age: ");
-            let gender = read_input("Enter gender: ");
+            let age = read_input("Enter age: ")
+                .parse()
+                .expect("Age must be a number");
+            let gender = read_input("Enter gender: ")
+                .chars()
+                .next()
+                .expect("Gender must be an only char");
             let nationality = read_input("Enter nationality: ");
             let mother_tongue = read_input("Enter mother tongue: ");
             let department = read_input("Enter department: ");
@@ -43,8 +48,8 @@ pub fn run() {
 
             let employee = Employee {
                 name,
-                age: age.parse().unwrap(),
-                gender: gender.chars().next().unwrap(),
+                age,
+                gender,
                 nationality,
                 mother_tongue,
                 department,
@@ -86,8 +91,6 @@ pub fn run() {
                 }
             }
         }
-
-        // Handle other operations (remove employees, display employees, etc.)
 
         if operation == "5" {
             println!("\nExited.");
