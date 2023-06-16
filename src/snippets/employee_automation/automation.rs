@@ -5,27 +5,31 @@ use crate::snippets::employee_automation::json_handlers::{
 use std::io;
 
 const FILE_PATH: &str = "employees.json";
+const MENU: &str = r#"
+- - - - - - - - - - - - - - - - 
+0- Show this message
+1- Add Employees
+2- Remove Employees
+3- Display Available Employees 
+4- Display Fired Employees
+5- Exit
+- - - - - - - - - - - - - - - - 
+"#;
 
 pub fn run() {
     if is_json_file_empty(FILE_PATH) {
         initialize_json_file(FILE_PATH)
     }
 
-    println!(
-        r#"
-    - - - - - - - - - - - - - - - - 
-    1- Add Employees
-    2- Remove Employees
-    3- Display Available Employees 
-    4- Display Fired Employees
-    5- Exit
-    - - - - - - - - - - - - - - - - 
-    "#
-    );
+    println!("{}", MENU);
 
     loop {
         println!("\nOperation: ");
         let operation = read_input("> ");
+
+        if operation == "0" {
+            println!("{}", MENU);
+        }
 
         if operation == "1" {
             let name = read_input("Enter name: ");
