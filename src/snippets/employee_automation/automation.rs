@@ -56,14 +56,28 @@ pub fn run() {
                 programming_languages: vectorize_languages(programming_languages),
             };
 
+            let removed_employees = read_employees_from_file(REMOVED_EMPLOYEES_JSON);
+            let employee_removed_before = removed_employees
+                .iter()
+                .find(|removed| removed.name == employee.name);
+
+            if let Some(emp) = employee_removed_before {
+                remove_employee(&emp.name, REMOVED_EMPLOYEES_JSON);
+            }
+
             save_employee(employee, EMPLOYEES_JSON);
             println!("Employee added successfully!");
         }
 
         if operation == "2" {
             let removed_employee = read_input("\nEnter the employee to be removed: ");
-            if let Some(employee) = remove_employee(&removed_employee, EMPLOYEES_JSON) {
-                save_employee(employee.clone(), REMOVED_EMPLOYEES_JSON);
+            match remove_employee(&removed_employee, EMPLOYEES_JSON) {
+                Some(employee) => {
+                    save_employee(employee.clone(), REMOVED_EMPLOYEES_JSON);
+                }
+                None => {
+                    println!("No employee found with the name {}", removed_employee);
+                }
             }
         }
 
