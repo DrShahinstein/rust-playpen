@@ -1,14 +1,46 @@
 use crate::snippets::employee_automation::employee::Employee;
 use std::fs::{File, OpenOptions};
 use std::io::{Read, Write};
+use std::io::{Seek, SeekFrom};
 use std::path::Path;
 
-pub fn is_json_file_empty(file_path: &str) -> bool {
-    todo!("Re-write this function.");
+fn is_json_array(contents: &str) -> bool {
+    if let Ok(parsed) = serde_json::from_str::<serde_json::Value>(contents) {
+        parsed.is_array()
+    } else {
+        false
+    }
 }
 
-pub fn initialize_json_file(file_path: &str) {
-    todo!("Re-write this function.");
+pub fn initialize_json(files: &[&str]) {
+    for file_path in files {
+        let path = Path::new(file_path);
+
+        if path.exists() {
+            // File exists, so check if it has an array inside
+            let mut file = OpenOptions::new()
+                .read(true)
+                .write(true)
+                .truncate(true)
+                .open(file_path)
+                .expect("Failed to open file");
+
+            let mut contents = String::new();
+
+            #[allow(clippy::collapsible_if)]
+            if file.read_to_string(&mut contents).is_ok() {
+                if contents.trim().is_empty() || !is_json_array(&contents) {
+                    // File is empty or doesn't have an array inside, so initialize with an empty array
+                    file.seek(SeekFrom::Start(0)).expect("Failed to seek file");
+                    file.write_all(b"[]").expect("Failed to write to file");
+                }
+            }
+        } else {
+            // File doesn't exist, create it and initialize with an empty array
+            let mut file = File::create(file_path).expect("Failed to create file");
+            file.write_all(b"[]").expect("Failed to write to file");
+        }
+    }
 }
 
 pub fn read_employees_from_file(file_path: &str) -> Vec<Employee> {
