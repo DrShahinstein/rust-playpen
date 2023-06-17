@@ -74,22 +74,14 @@ pub fn save_employee(employee: Employee, file_path: &str) {
 pub fn remove_employee(name: &str, file_path: &str) -> Option<Employee> {
     let mut employees = read_employees_from_file(file_path);
     let mut removed_employee: Option<Employee> = None;
-    let mut removed = false;
 
     employees.retain(|employee| {
         let retain = employee.name != name;
         if !retain {
-            removed = true;
             removed_employee = Some(employee.clone());
         }
         retain
     });
-
-    if removed {
-        println!("Employee with name '{}' has been removed.", name);
-    } else {
-        println!("No employee with name '{}' found.", name);
-    }
 
     write_employees_to_file(&employees, file_path);
 
