@@ -1,6 +1,6 @@
 use crate::snippets::employee_automation::employee::{remove_employee, save_employee, Employee};
 use crate::snippets::employee_automation::json_handlers::{
-    initialize_json_file, is_json_file_empty, read_employees_from_file,
+    initialize_json, read_employees_from_file,
 };
 use std::io;
 
@@ -18,13 +18,7 @@ const MENU: &str = r#"
 "#;
 
 pub fn run() {
-    if is_json_file_empty(EMPLOYEES_JSON) {
-        initialize_json_file(EMPLOYEES_JSON);
-    }
-
-    if is_json_file_empty(REMOVED_EMPLOYEES_JSON) {
-        initialize_json_file(REMOVED_EMPLOYEES_JSON);
-    }
+    initialize_json(&[EMPLOYEES_JSON, REMOVED_EMPLOYEES_JSON]);
 
     println!("{}", MENU);
 
