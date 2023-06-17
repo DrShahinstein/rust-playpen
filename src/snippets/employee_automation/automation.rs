@@ -64,9 +64,6 @@ pub fn run() {
             let removed_employee = read_input("\nEnter the employee to be removed: ");
             if let Some(employee) = remove_employee(&removed_employee, EMPLOYEES_JSON) {
                 save_employee(employee.clone(), REMOVED_EMPLOYEES_JSON);
-                println!("The employee {} removed successfully.", employee.name);
-            } else {
-                println!("No employee found with the name {}.", removed_employee);
             }
         }
 
@@ -114,7 +111,7 @@ fn view_employees(file_path: &str, label: &str) {
         }
     }
 
-    let input = read_input("Enter the employee index to view details: ");
+    let input = read_input("\nEnter the employee index to view details: ");
     let selected_index = input.parse::<usize>();
 
     match selected_index {
