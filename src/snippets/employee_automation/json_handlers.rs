@@ -1,35 +1,14 @@
 use crate::snippets::employee_automation::employee::Employee;
-use serde_json::{from_str, Value};
 use std::fs::{File, OpenOptions};
 use std::io::{Read, Write};
 use std::path::Path;
 
 pub fn is_json_file_empty(file_path: &str) -> bool {
-    let path = Path::new(file_path);
-
-    if !path.exists() {
-        return true; // File doesn't exist, consider it empty
-    }
-
-    if path.is_file() {
-        let mut file = match File::open(path) {
-            Ok(file) => file,
-            Err(err) => panic!("Failed to open file {}: {}", file_path, err),
-        };
-
-        let mut contents = String::new();
-        if file.read_to_string(&mut contents).is_ok() {
-            if let Ok(json) = from_str::<Value>(&contents) {
-                return json.is_array() && json.as_array().unwrap().is_empty();
-            }
-        }
-    }
-
-    false
+    todo!("Re-write this function.");
 }
 
 pub fn initialize_json_file(file_path: &str) {
-    todo!("Re-write this function. And the above function if necessary.");
+    todo!("Re-write this function.");
 }
 
 pub fn read_employees_from_file(file_path: &str) -> Vec<Employee> {
