@@ -4,7 +4,7 @@ use crate::snippets::employee_automation::json_handlers::{
 use serde::{Deserialize, Serialize};
 use std::fmt::Display;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Employee {
     pub name: String,
     pub age: u8,
@@ -69,18 +69,18 @@ pub fn save_employee(employee: Employee, file_path: &str) {
     employees.push(employee);
 
     write_employees_to_file(&employees, file_path);
-
-    println!("Employee added successfully!");
 }
 
-pub fn remove_employee(name: &str, file_path: &str) {
+pub fn remove_employee(name: &str, file_path: &str) -> Option<Employee> {
     let mut employees = read_employees_from_file(file_path);
+    let mut removed_employee: Option<Employee> = None;
     let mut removed = false;
 
     employees.retain(|employee| {
         let retain = employee.name != name;
         if !retain {
             removed = true;
+            removed_employee = Some(employee.clone());
         }
         retain
     });
@@ -92,4 +92,6 @@ pub fn remove_employee(name: &str, file_path: &str) {
     }
 
     write_employees_to_file(&employees, file_path);
+
+    removed_employee
 }
