@@ -1,7 +1,6 @@
 use crate::snippets::employee_automation::employee::Employee;
 use std::fs::{File, OpenOptions};
-use std::io::{Read, Write};
-use std::io::{Seek, SeekFrom};
+use std::io::{Read, Seek, SeekFrom, Write};
 use std::path::Path;
 
 fn is_json_array(contents: &str) -> bool {
@@ -17,22 +16,23 @@ pub fn initialize_json(files: &[&str]) {
         let path = Path::new(file_path);
 
         if path.exists() {
-            // File exists, so check if it has an array inside
             let mut file = OpenOptions::new()
                 .read(true)
                 .write(true)
-                .truncate(true)
                 .open(file_path)
                 .expect("Failed to open file");
 
             let mut contents = String::new();
 
-            #[allow(clippy::collapsible_if)]
             if file.read_to_string(&mut contents).is_ok() {
                 if contents.trim().is_empty() || !is_json_array(&contents) {
                     // File is empty or doesn't have an array inside, so initialize with an empty array
                     file.seek(SeekFrom::Start(0)).expect("Failed to seek file");
+                    file.set_len(0).expect("Failed to truncate file");
                     file.write_all(b"[]").expect("Failed to write to file");
+                } else {
+                    // Reset file position to the start
+                    file.seek(SeekFrom::Start(0)).expect("Failed to seek file");
                 }
             }
         } else {
