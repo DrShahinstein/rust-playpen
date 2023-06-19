@@ -1,4 +1,5 @@
 pub mod snippets {
+    pub mod generic_methods;
     pub mod guess_number;
     pub mod median_and_mode;
     pub mod structs;
