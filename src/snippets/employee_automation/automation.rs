@@ -13,7 +13,8 @@ const MENU: &str = r#"
 2- Remove Employees
 3- Display Available Employees 
 4- Display Removed Employees
-5- Exit
+5- Edit Employees
+6- Exit
 - - - - - - - - - - - - - - - - 
 "#;
 
@@ -74,6 +75,7 @@ pub fn run() {
             match remove_employee(&removed_employee, EMPLOYEES_JSON) {
                 Some(employee) => {
                     save_employee(employee.clone(), REMOVED_EMPLOYEES_JSON);
+                    println!("{} successfully removed!", &employee.name);
                 }
                 None => {
                     println!("No employee found with the name {}", removed_employee);
@@ -82,14 +84,107 @@ pub fn run() {
         }
 
         if operation == "3" {
-            view_employees(EMPLOYEES_JSON, "-- Available Employees --");
+            view_employees(
+                EMPLOYEES_JSON,
+                "-- Available Employees --",
+                |selected_employee| println!("{}", selected_employee.employee_identity()),
+            );
         }
 
         if operation == "4" {
-            view_employees(REMOVED_EMPLOYEES_JSON, "-- Removed Employees --");
+            view_employees(
+                REMOVED_EMPLOYEES_JSON,
+                "-- Removable Employees --",
+                |selected_employee| println!("{}", selected_employee.employee_identity()),
+            );
         }
 
         if operation == "5" {
+            view_employees(
+                EMPLOYEES_JSON,
+                "-- Edit Employees --",
+                |selected_employee| {
+                    println!("{}", selected_employee.enumerated_employee());
+                    let property = read_input("Enter the property index to edit: ").parse::<u8>();
+                    match property {
+                        Ok(index) => match index {
+                            1 => {
+                                let name = &read_input("Enter the new name to overwrite: ");
+                                selected_employee.name = name.to_string();
+                                println!("\nThe name changed: {}", name);
+                            }
+                            2 => {
+                                let age: u8 = read_input("Enter the new age to overwrite: ")
+                                    .parse()
+                                    .unwrap();
+                                selected_employee.age = age;
+                                println!("\nThe age changed: {}", age);
+                            }
+                            3 => {
+                                let gender_input =
+                                    read_input("Enter the new gender (M/F) to overwrite: ");
+                                let gender = match gender_input.chars().next() {
+                                    Some(ch) => ch,
+                                    None => {
+                                        println!("\nInvalid gender input");
+                                        return;
+                                    }
+                                };
+                                selected_employee.gender = gender;
+                                println!("\nThe gender changed: {}", gender);
+                            }
+                            4 => {
+                                let nationality =
+                                    &read_input("Enter the new nationality to overwrite: ");
+                                selected_employee.nationality = nationality.to_string();
+                                println!("\nThe nationality changed: {}", nationality);
+                            }
+                            5 => {
+                                let mother_tongue =
+                                    &read_input("Enter the new mother tongue to overwrite: ");
+                                selected_employee.mother_tongue = mother_tongue.to_string();
+                                println!("\nThe mother tongue changed: {}", mother_tongue);
+                            }
+                            6 => {
+                                let department =
+                                    &read_input("Enter the new department to overwrite: ");
+                                selected_employee.department = department.to_string();
+                                println!("\nThe department changed: {}", department);
+                            }
+                            7 => {
+                                let spoken_languages =
+                                    &read_input("Enter the new spoken languages to overwrite: ");
+                                selected_employee.spoken_languages =
+                                    vectorize_languages(spoken_languages.to_string());
+                                println!("\nThe spoken languages changed: {}", spoken_languages);
+                            }
+                            8 => {
+                                let programming_languages = &read_input(
+                                    "Enter the new programming languages to overwrite: ",
+                                );
+                                selected_employee.programming_languages =
+                                    vectorize_languages(programming_languages.to_string());
+                                println!(
+                                    "\nThe programming languages changed: {}",
+                                    programming_languages
+                                );
+                            }
+                            _ => {
+                                println!("\nNo property found with the index {}", index);
+                            }
+                        },
+                        Err(_) => {
+                            println!("\nPlease enter a valid index number.");
+                        }
+                    }
+                    remove_employee(&selected_employee.name, EMPLOYEES_JSON);
+                    save_employee(selected_employee.clone(), EMPLOYEES_JSON);
+                    println!("{} successfully edited!", &selected_employee.name);
+                },
+            );
+        }
+
+        if operation == "6" {
             println!("\nExited.");
             break;
         }
@@ -112,7 +207,10 @@ fn vectorize_languages(langs_input: String) -> Vec<String> {
         .collect()
 }
 
-fn view_employees(file_path: &str, label: &str) {
+fn view_employees<F>(file_path: &str, label: &str, function: F)
+where
+    F: Fn(&mut Employee),
+{
     println!("\n{}", label);
     let employees = read_employees_from_file(file_path);
 
@@ -132,7 +230,8 @@ fn view_employees(file_path: &str, label: &str) {
         Ok(index) => {
             if index > 0 && index <= employees.len() {
                 let selected_employee = &employees[index - 1];
-                println!("{}", selected_employee.employee_identity());
+                let mut mutable_employee = selected_employee.clone();
+                function(&mut mutable_employee);
             } else {
                 println!("No employee found with the index {}", index);
             }
