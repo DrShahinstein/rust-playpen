@@ -42,6 +42,31 @@ impl Employee {
         )
     }
 
+    pub fn enumerated_employee(&self) -> String {
+        let gender = if self.gender == 'M' { "Male" } else { "Female" };
+
+        format!(
+            r#"
+        1- Name: {}  
+        2- Age: {}
+        3- Gender: {}
+        4- Nationality: {}
+        5- Mother Tongue: {}
+        6- Department: {}
+        7- Spoken Languages: {:?}
+        8- Programming Languages: {:?}
+        "#,
+            self.name,
+            self.age,
+            gender,
+            self.nationality,
+            self.mother_tongue,
+            self.department,
+            self.spoken_languages,
+            self.programming_languages
+        )
+    }
+
     pub fn add_programming_languages(&mut self, langs: &[&str]) {
         self.programming_languages
             .extend(langs.iter().map(|&lang| lang.to_string()));
@@ -50,6 +75,10 @@ impl Employee {
     pub fn add_spoken_languages(&mut self, langs: &[&str]) {
         self.spoken_languages
             .extend(langs.iter().map(|&lang| lang.to_string()));
+    }
+
+    pub fn field_count() -> u8 {
+        8
     }
 }
 
