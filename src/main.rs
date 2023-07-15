@@ -1,10 +1,12 @@
 #[allow(unused_imports)]
+use rust_playpen::codewars;
+#[allow(unused_imports)]
 use rust_playpen::snippets::{
-    codewars, employee_automation, generic_methods, guess_number, lifetimes, median_and_mode,
-    structs, temperature_converter, using_json,
+    employee_automation, generic_methods, guess_number, lifetimes, median_and_mode, structs,
+    temperature_converter, using_json,
 };
 
-// Run snippets here
+// Run and test codes here
 fn main() {
     /*
     employee_automation::automation::run();
