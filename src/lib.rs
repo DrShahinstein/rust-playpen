@@ -6,6 +6,9 @@ pub mod snippets {
     pub mod structs;
     pub mod temperature_converter;
     pub mod using_json;
+    pub mod codewars {
+        pub mod move_zeros_to_end;
+    }
     pub mod employee_automation {
         pub mod automation;
         pub mod employee;
