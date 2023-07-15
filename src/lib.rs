@@ -15,4 +15,5 @@ pub mod snippets {
 
 pub mod codewars {
     pub mod move_zeros_to_end;
+    pub mod two_sum;
 }
