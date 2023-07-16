@@ -14,7 +14,7 @@ pub mod snippets {
 }
 
 pub mod codewars {
-    pub mod incerement_string;
+    pub mod increment_string;
     pub mod move_zeros_to_end;
     pub mod two_sum;
 }
