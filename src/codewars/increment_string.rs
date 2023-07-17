@@ -1,5 +1,7 @@
 // https://www.codewars.com/kata/54a91a4883a7de5d7800009c/train/rust
 
+use crate::test;
+
 pub fn increment_string(s: &str) -> String {
     let rev_num: String = s.chars().rev().take_while(|c| c.is_numeric()).collect();
     if rev_num.is_empty() {
@@ -40,20 +42,14 @@ fn increment_with_leading_zeros(s: &str) -> String {
     incremented_digits.into_iter().collect()
 }
 
-fn test(arg: &str, expected: &str) {
-    let result = increment_string(arg);
-    println!("{result} = {expected}");
-    assert!(result == expected);
-}
-
 pub fn prove() {
-    test("foo", "foo1");
-    test("foobar001", "foobar002");
-    test("foobar1", "foobar2");
-    test("foobar00", "foobar01");
-    test("foobar99", "foobar100");
-    test("foobar099", "foobar100");
-    test("", "1");
+    test!(increment_string, "foo1", "foo");
+    test!(increment_string, "foobar002", "foobar001");
+    test!(increment_string, "foobar2", "foobar1");
+    test!(increment_string, "foobar01", "foobar00");
+    test!(increment_string, "foobar100", "foobar99");
+    test!(increment_string, "foobar100", "foobar099");
+    test!(increment_string, "1", "");
 }
 
 /*
