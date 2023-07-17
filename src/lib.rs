@@ -17,4 +17,15 @@ pub mod codewars {
     pub mod increment_string;
     pub mod move_zeros_to_end;
     pub mod two_sum;
+
+    #[macro_export]
+    macro_rules! test {
+    ($solution:expr, $expected:expr, $($args:expr),*) => {
+        {
+            let result = $solution($($args),*);
+            println!("{:?} => {:?}", result, $expected);
+            assert_eq!(result, $expected);
+        }
+    };
+}
 }
