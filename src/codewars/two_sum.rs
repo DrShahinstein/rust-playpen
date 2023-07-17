@@ -1,5 +1,7 @@
 // https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/rust
 
+use crate::test;
+
 pub fn two_sum(numbers: &[i32], target: i32) -> (usize, usize) {
     let len = numbers.len();
     let mut indices = (0..len).flat_map(|first_index| {
@@ -15,8 +17,7 @@ pub fn two_sum(numbers: &[i32], target: i32) -> (usize, usize) {
 pub fn prove() {
     let numbers = &[2, 7, 11, 15];
     let target = 9;
-    let result = two_sum(numbers, target);
-    println!("{:?}", result); // Output: (0, 1)
+    test!(two_sum, (0, 1), numbers, target);
 }
 
 /*
