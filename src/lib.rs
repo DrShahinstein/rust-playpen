@@ -15,6 +15,7 @@ pub mod snippets {
 
 pub mod codewars {
     pub mod increment_string;
+    pub mod longest_repetition_char;
     pub mod move_zeros_to_end;
     pub mod two_sum;
 
