@@ -21,6 +21,15 @@ Rust Playpen is a dynamic and evolving codebase that captures my progress as I d
 4. Read the code comments, try modifying the code, and experiment to enhance your understanding of Rust concepts.
 5. Refer to the provided learning resources and Rust documentation to deepen your knowledge.
 
+## Codewars Solutions
+
+| Kata                                              | Module                         |
+| ------------------------------------------------- | ------------------------------ |
+| [string incrementer](https://www.codewars.com/kata/54a91a4883a7de5d7800009c/train/rust) | [increment_string.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/increment_string.rs) |
+| [character with longest consecutive repetition](https://www.codewars.com/kata/586d6cefbcc21eed7a001155/train/rust) | [longest_repetition_char.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/longest_repetition_char.rs) |
+| [moving zeros to the end](https://www.codewars.com/kata/52597aa56021e91c93000cb0/train/rust) | [move_zeros_to_end.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/move_zeros_to_end.rs)      |
+| [two sum](https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/rust) | [two_sum.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/two_sum.rs) |
+
 ## Contributing
 
 Contributions to the Rust Playpen project are welcome! While major changes or additions may not be suitable for this personal learning log, I appreciate pull requests that focus on code refactoring, enhancing code quality, or improving the overall structure of the project.
@@ -39,11 +48,3 @@ Please note that the acceptance of pull requests is at my discretion, and not al
 
 I would like to express my gratitude to the Rust community for their invaluable support, the creators of Rust programming language for developing such an amazing language, and the various learning resources that have contributed to my growth as a Rust developer.
 
-## Codewars Solutions
-
-| Kata                                              | Module                         |
-| ------------------------------------------------- | ------------------------------ |
-| [string incrementer](https://www.codewars.com/kata/54a91a4883a7de5d7800009c/train/rust) | [increment_string.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/increment_string.rs) |
-| [character with longest consecutive repetition](https://www.codewars.com/kata/586d6cefbcc21eed7a001155/train/rust) | [longest_repetition_char.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewar/longest_repetition_char.rs) |
-| [moving zeros to the end](https://www.codewars.com/kata/52597aa56021e91c93000cb0/train/rust) | [move_zeros_to_end.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/move_zeros_to_end.rs)      |
-| [two sum](https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/rust) | [two_sum.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/two_sum.rs) |
