@@ -1,4 +1,5 @@
 pub mod snippets {
+    pub mod concurrency;
     pub mod generic_methods;
     pub mod guess_number;
     pub mod lifetimes;
