@@ -1,6 +1,8 @@
 #[allow(unused_imports)]
 use rust_playpen::codewars;
 #[allow(unused_imports)]
+use rust_playpen::snippets::concurrency::producer_consumer;
+#[allow(unused_imports)]
 use rust_playpen::snippets::smart_pointers::{box_pointer, rc_pointer};
 #[allow(unused_imports)]
 use rust_playpen::snippets::{
