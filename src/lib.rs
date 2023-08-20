@@ -19,6 +19,7 @@ pub mod codewars {
     pub mod increment_string;
     pub mod longest_repetition_char;
     pub mod move_zeros_to_end;
+    pub mod spin_words;
     pub mod two_sum;
 
     #[macro_export]
@@ -26,7 +27,7 @@ pub mod codewars {
     ($solution:expr, $expected:expr, $($args:expr),*) => {
         {
             let result = $solution($($args),*);
-            println!("{:?} => {:?}", result, $expected);
+            println!("✅ Expected: {:?} => Result: {:?}", $expected, result);
             assert_eq!(result, $expected);
         }
     };
