@@ -29,7 +29,7 @@ Rust Playpen is a dynamic and evolving codebase that captures my progress as I d
 | [character with longest consecutive repetition](https://www.codewars.com/kata/586d6cefbcc21eed7a001155/train/rust) | [longest_repetition_char.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/longest_repetition_char.rs) |
 | [moving zeros to the end](https://www.codewars.com/kata/52597aa56021e91c93000cb0/train/rust) | [move_zeros_to_end.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/move_zeros_to_end.rs)      |
 | [two sum](https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/rust) | [two_sum.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/two_sum.rs) |
-| [spin words](https://www.codewars.com/kata/5264d2b162488dc400000001/train/rust) |[spin words](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/spin_words.rs)|
+| [Stop gninnipS My sdroW!](https://www.codewars.com/kata/5264d2b162488dc400000001/train/rust) |[spin words](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/spin_words.rs)|
 
 ## Contributing
 
