@@ -16,6 +16,7 @@ pub mod snippets {
 }
 
 pub mod codewars {
+    pub mod alphanumeric;
     pub mod increment_string;
     pub mod longest_repetition_char;
     pub mod move_zeros_to_end;
