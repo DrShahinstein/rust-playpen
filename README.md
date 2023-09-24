@@ -1,10 +1,6 @@
-# Rust Playpen: A Learning Journey in Rust
+# Rust Playpen
 
-Welcome to the Rust Playpen, a repository that chronicles my journey of learning the Rust programming language.
-
-## Overview
-
-Rust Playpen is a dynamic and evolving codebase that captures my progress as I dive deeper into Rust. It serves as a personal learning log, containing a wide range of practical examples, code snippets, experiments, and mini-projects that showcase different aspects of Rust programming.
+A repository that chronicles my journey of learning the basics of Rust programming language.
 
 ## Codewars Solutions
 
@@ -16,7 +12,3 @@ Rust Playpen is a dynamic and evolving codebase that captures my progress as I d
 | [two sum](https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/rust) | [two_sum.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/two_sum.rs) |
 | [Stop gninnipS My sdroW!](https://www.codewars.com/kata/5264d2b162488dc400000001/train/rust) |[spin words.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/spin_words.rs)|
 | [not very secure](https://www.codewars.com/kata/526dbd6c8c0eb53254000110/train/rust) |[alphanumeric.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/alphanumeric.rs)|
-
-## Contributing
-
-Contributions to the Rust Playpen project are welcome! While major changes or additions may not be suitable for this personal learning log, I appreciate pull requests that focus on code refactoring, enhancing code quality, or improving the overall structure of the project.
