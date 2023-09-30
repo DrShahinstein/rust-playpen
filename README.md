@@ -1,6 +1,6 @@
 # Rust Playpen
 
-A repository that chronicles my journey of learning the basics of Rust programming language.
+A repository consisting of my Rust practices.
 
 ## Codewars Solutions
 
