@@ -12,3 +12,4 @@ A repository consisting of my Rust practices.
 | [two sum](https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/rust) | [two_sum.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/two_sum.rs) |
 | [Stop gninnipS My sdroW!](https://www.codewars.com/kata/5264d2b162488dc400000001/train/rust) |[spin words.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/spin_words.rs)|
 | [not very secure](https://www.codewars.com/kata/526dbd6c8c0eb53254000110/train/rust) |[alphanumeric.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/alphanumeric.rs)|
+| [probabilities for sums in rolling cubic dice](https://www.codewars.com/kata/56f78a42f749ba513b00037f/train/rust) |[dice_probs.rs](https://github.com/DrShahinstein/rust-playpen/blob/main/src/codewars/dice_probs.rs)|
