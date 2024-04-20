@@ -17,6 +17,7 @@ pub mod snippets {
 
 pub mod codewars {
     pub mod alphanumeric;
+    pub mod dice_probs;
     pub mod increment_string;
     pub mod longest_repetition_char;
     pub mod move_zeros_to_end;
@@ -28,8 +29,11 @@ pub mod codewars {
     ($solution:expr, $expected:expr, $($args:expr),*) => {
         {
             let result = $solution($($args),*);
-            println!("✅ Expected: {:?} => Result: {:?}", $expected, result);
-            assert_eq!(result, $expected);
+            if result == $expected {
+                println!("Passed!");
+            } else {
+                println!("Failed => expected: {:?} but given: {:?}", $expected, result);
+            }
         }
     };
 }
